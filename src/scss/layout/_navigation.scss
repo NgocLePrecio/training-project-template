@@ -1,4 +1,6 @@
 @import '../utilities/variables';
+@import '../utilities/functions';
+@import '../utilities/mixins';
 
 * {
   margin: 0px;
@@ -27,6 +29,7 @@
 
 .title {
   padding-bottom: 15px;
+  font-size: fontSizeMul($baseFontSize,2);
 }
 
 #toggle {
@@ -46,10 +49,7 @@
         color: black;
         border-radius: 6px;
         cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        @include flexCenter(column);
         border: 1px solid rgb(175, 173, 173);
         span {
             background-color: rgb(143, 141, 141);
@@ -63,7 +63,6 @@
 .togglearea {
   display: none;
 }
-
 
 .threedot {
   position: relative;

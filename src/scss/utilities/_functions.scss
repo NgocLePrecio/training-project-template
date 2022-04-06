@@ -1,0 +1,3 @@
+@function fontSizeMul($base,$multiply){
+    @return $base*$multiply;
+}
