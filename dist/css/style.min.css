@@ -16,11 +16,16 @@
   /* text-transform: uppercase; */
   padding: 12px 16px;
 }
-.content p {
-  text-align: justify;
+.content {
+  /* text-align: justify; */
   margin: 10px;
   padding: 10px;
 }
+
+.title {
+  padding-bottom: 15px;
+}
+
 #toggle {
   display: none;
 }
@@ -57,6 +62,30 @@
 .threedot {
   position: relative;
   top: 2px;
+}
+
+/* Table styling for desktop and mobile */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: white;
+  color: black;
+  font-weight: normal;
+  border-bottom: 1px solid #ccc;
+}
+
+td {
+  border-bottom: 1px solid rgb(253, 244, 244);
+}
+
+td,
+th {
+  padding: 6px;
+  /* border: 1px solid #ccc;  */
+  text-align: left;
 }
 
 @media screen and (max-width: 700px) {
