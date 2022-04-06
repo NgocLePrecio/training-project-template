@@ -152,9 +152,10 @@ th {
 
   td:first-child {
       background-color: $bgcolor;
+      text-align: right;
   }
 
-  td:first-child, th:first-child {
+  th:first-child {
     text-align: right;
 }
 

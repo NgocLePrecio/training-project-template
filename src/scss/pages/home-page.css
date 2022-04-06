@@ -172,8 +172,9 @@ th {
   }
   td:first-child {
     background-color: #e7e7e7;
+    text-align: right;
   }
-  td:first-child, th:first-child {
+  th:first-child {
     text-align: right;
   }
   /*
