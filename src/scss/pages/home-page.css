@@ -18,9 +18,7 @@
 .navbar a {
   color: black;
   text-align: left;
-  /* font-weight: bold; */
   text-decoration: none;
-  /* text-transform: uppercase; */
   padding: 12px 16px;
 }
 
@@ -29,7 +27,6 @@
 }
 
 .content {
-  /* text-align: justify; */
   margin: 10px;
   padding: 10px;
 }
@@ -100,22 +97,26 @@ table {
   border-collapse: collapse;
 }
 
-th {
+table th {
   background: white;
   color: black;
   font-weight: normal;
   border-bottom: 1px solid #e7e7e7;
+  text-align: left;
 }
 
-td {
-  border-bottom: 1px solid #fdf4f4;
+table td {
+  border-bottom: 1px solid #e7e7e7;
+  text-align: left;
+}
+
+td:nth-child(3), td:nth-child(4) {
+  color: grey;
 }
 
 td,
 th {
   padding: 6px;
-  /* border: 1px solid #ccc;  */
-  text-align: left;
 }
 
 @media screen and (max-width: 760px) {
@@ -176,6 +177,9 @@ th {
   }
   th:first-child {
     text-align: right;
+  }
+  td:nth-child(3), td:nth-child(4) {
+    color: black;
   }
   /*
 	Label the data
