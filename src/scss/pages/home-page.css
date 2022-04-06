@@ -1,15 +1,20 @@
-@import '../utilities/variables';
-
 * {
   margin: 0px;
   padding: 0px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
+
 .navbar {
-  background-color: $bgcolor;
+  background-color: #e7e7e7;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
 }
+
 .navbar a {
   color: black;
   text-align: left;
@@ -20,8 +25,9 @@
 }
 
 .navbar a:hover {
-    background-color: $hovercolor;
+  background-color: lightgray;
 }
+
 .content {
   /* text-align: justify; */
   margin: 10px;
@@ -35,37 +41,53 @@
 #toggle {
   display: none;
 }
+
 .togglearea {
-  background-color: $bgcolor;
+  background-color: #e7e7e7;
   border-bottom: 2px solid white;
   color: white;
   padding: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
+
 .togglearea label {
-  background-color: $bgcolor;
+  background-color: #e7e7e7;
   height: 35px;
   width: 40px;
   color: black;
   border-radius: 6px;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border: 1px solid rgb(175, 173, 173);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #afadad;
 }
+
 .togglearea label span {
-  background-color: rgb(143, 141, 141);
+  background-color: #8f8d8d;
   height: 3px;
   width: 70%;
   margin: 2px 0px;
 }
+
 .togglearea {
   display: none;
 }
-
 
 .threedot {
   position: relative;
@@ -82,11 +104,11 @@ th {
   background: white;
   color: black;
   font-weight: normal;
-  border-bottom: 1px solid $bgcolor;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 td {
-  border-bottom: 1px solid rgb(253, 244, 244);
+  border-bottom: 1px solid #fdf4f4;
 }
 
 td,
@@ -96,20 +118,24 @@ th {
   text-align: left;
 }
 
-
-
 @media screen and (max-width: 760px) {
   .navbar {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     display: none;
   }
   #toggle:checked + .navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
   .togglearea {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
-
   table,
   thead,
   tbody,
@@ -118,27 +144,22 @@ th {
   tr {
     display: block;
   }
-
   /* Hide table headers (but not display: none;, for accessibility) */
   thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-
   tr {
-    // border: 1px solid #ccc;
     margin-bottom: 20px;
   }
-
   td {
     /* Behave  like a "row" */
-    border: 1px solid $bgcolor;
+    border: 1px solid #e7e7e7;
     position: relative;
     padding-left: 50%;
     /* margin-bottom: 10px; */
   }
-
   td:before {
     /* Now like a table header */
     position: absolute;
@@ -149,15 +170,12 @@ th {
     padding-right: 10px;
     white-space: nowrap;
   }
-
   td:first-child {
-      background-color: $bgcolor;
+    background-color: #e7e7e7;
   }
-
   td:first-child, th:first-child {
     text-align: right;
-}
-
+  }
   /*
 	Label the data
 	*/
@@ -165,7 +183,6 @@ th {
     content: 'Name';
     font-weight: bold;
     font-style: italic;
-    
   }
   td:nth-of-type(3):before {
     content: 'Modified';
@@ -183,9 +200,8 @@ th {
     font-style: italic;
     text-align: left;
   }
-
   td:last-child {
-      display: none;
+    display: none;
   }
-
 }
+/*# sourceMappingURL=home-page.css.map */
