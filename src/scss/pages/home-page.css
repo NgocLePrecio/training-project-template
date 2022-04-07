@@ -149,7 +149,6 @@ th {
   tr {
     display: block;
   }
-  /* Hide table headers (but not display: none;, for accessibility) */
   thead tr {
     position: absolute;
     top: -9999px;
@@ -159,16 +158,12 @@ th {
     margin-bottom: 20px;
   }
   td {
-    /* Behave  like a "row" */
     border: 1px solid #e7e7e7;
     position: relative;
     padding-left: 50%;
-    /* margin-bottom: 10px; */
   }
   td:before {
-    /* Now like a table header */
     position: absolute;
-    /* Top/left values mimic padding */
     top: 6px;
     left: 6px;
     width: 45%;
