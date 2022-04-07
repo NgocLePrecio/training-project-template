@@ -26,6 +26,19 @@
   background-color: lightgray;
 }
 
+.navbar .plusIcon {
+  font-size: 12px;
+  color: #ad06ad;
+}
+
+.navbar .iconColor {
+  color: #ad06ad;
+}
+
+.navbar .excelIcon {
+  color: green;
+}
+
 #toggle {
   display: none;
 }
