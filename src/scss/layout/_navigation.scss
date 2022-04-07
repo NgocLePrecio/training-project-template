@@ -2,11 +2,6 @@
 @import '../utilities/functions';
 @import '../utilities/mixins';
 
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
 .navbar {
   background-color: $bgcolor;
   display: flex;
@@ -28,11 +23,7 @@
 
     .iconColor {
       color: $iconcolor;
-    }
-
-    .excelIcon {
-      color: $excelColor;
-    }
+    } 
 }
 
 #toggle {

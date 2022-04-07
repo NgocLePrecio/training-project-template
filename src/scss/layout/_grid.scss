@@ -35,6 +35,10 @@ th {
   font-size: fontSizeMul($baseFontSize,2);
 }
 
+.excelIcon {
+  color: $excelColor;
+}
+
 @media screen and (max-width: 760px) {
     table,
   thead,
