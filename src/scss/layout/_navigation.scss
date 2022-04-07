@@ -22,16 +22,6 @@
     }
 }
 
-.content {
-  margin: 10px;
-  padding: 10px;
-}
-
-.title {
-  padding-bottom: 15px;
-  font-size: fontSizeMul($baseFontSize,2);
-}
-
 #toggle {
   display: none;
 }
@@ -69,30 +59,7 @@
   top: 2px;
 }
 
-/* Table styling for desktop and mobile */
-table {
-  width: 100%;
-  border-collapse: collapse;
-    th {
-        background: white;
-        color: black;
-        font-weight: normal;
-        border-bottom: 1px solid $bgcolor;
-        text-align: left;
-    }
-    td {
-        border-bottom: 1px solid $bgcolor;
-        text-align: left;
-    }
-    
-}
-td:nth-child(3),td:nth-child(4){
-        color: grey;
-    }
-td,
-th {
-  padding: 6px;
-}
+
 
 @media screen and (max-width: 760px) {
   .navbar {
@@ -106,88 +73,5 @@ th {
     display: flex;
   }
 
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
-
-  /* Hide table headers (but not display: none;, for accessibility) */
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  tr {
-    // border: 1px solid #ccc;
-    margin-bottom: 20px;
-  }
-
-  td {
-    /* Behave  like a "row" */
-    border: 1px solid $bgcolor;
-    position: relative;
-    padding-left: 50%;
-    /* margin-bottom: 10px; */
-  }
-
-  td:before {
-    /* Now like a table header */
-    position: absolute;
-    /* Top/left values mimic padding */
-    top: 6px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-  }
-
-  td:first-child {
-      background-color: $bgcolor;
-      text-align: right;
-  }
-
-  th:first-child {
-    text-align: right;
-}
-
-    td:nth-child(3),td:nth-child(4){
-        color: black;
-    }
-
-  /*
-	Label the data
-	*/
-  td:nth-of-type(2):before {
-    content: 'Name';
-    font-weight: $fontweight;
-    font-style: $fontstyle;
-  }
-
-  td:nth-of-type(3):before {
-    content: 'Modified';
-    font-weight: $fontweight;
-    font-style: $fontstyle;
-  }
-
-  td:nth-of-type(4):before {
-    content: 'Modified By';
-    font-weight: $fontweight;
-    font-style: $fontstyle;
-  }
-
-  td:nth-of-type(1):before {
-    content: 'File Type';
-    font-weight: $fontweight;
-    font-style: $fontstyle;
-    text-align: left;
-  }
-
-  td:last-child {
-      display: none;
-  }
+  
 }
