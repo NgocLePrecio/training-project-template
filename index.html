@@ -2,6 +2,7 @@
 	<head>
 		<link rel="stylesheet" href="./src/scss/pages/home-page.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./src/scss/pages/ts_assignment.css">
 	</head>
 	<body>
 		<div class="togglearea">
@@ -14,7 +15,7 @@
 		
 		<input type="checkbox" id="toggle">
 		<div class="navbar">
-			<a href="#"><i class="fa fa-plus plusIcon"></i> New <i
+			<a href="./index.html"><i class="fa fa-plus plusIcon"></i> New <i
 					class="fa fa-angle-down"></i></a>
 			<a href="#"><i class="fa fa-upload iconColor"></i> Upload <i
 					class="fa fa-angle-down"></i></a>
@@ -75,6 +76,26 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>		
+		<!-- Add File Modal -->
+		<div id="addFileModal" class="modal">
+		
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span id="closeFile" class="close">&times;</span>
+				<p>File</p>
+			</div>
+		
+		</div>
+		<!-- Add Folder Modal -->
+		<div id="addFolderModal" class="modal">
+		
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span id="closeFolder" class="close">&times;</span>
+				<p>Folder</p>
+			</div>
+		
 		</div>
 		<script src="./dist/src/scripts/components/_assignment.js"></script>
 	</body>
