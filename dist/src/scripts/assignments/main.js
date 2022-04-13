@@ -75,18 +75,17 @@ $(function () {
         closeModal(evt);
     });
     $('#OkUpdateBtn').on('click', function (evt) {
+        var data = JSON.parse(localStorage.getItem(curRowId));
         var newDataTitle = $('#dataTitle').val().toString();
         var user = $('#dataUser').val().toString();
         var today = new Date();
         var dateString = today.getDate().toString() + '/' + (today.getMonth() + 1).toString();
-        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(1)")).text(newDataTitle);
-        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(2)")).text(dateString);
-        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(3)")).text(user);
-        var data = JSON.parse(localStorage.getItem(curRowId));
-        data.title = newDataTitle;
-        data.modifiedAt = dateString;
-        data.modifiedBy = user;
-        localStorage.setItem(curRowId, JSON.stringify(data));
+        if (data.type === 'folder') {
+            folderManager.updateFolder(newDataTitle, user, dateString, curRowNum, data);
+        }
+        else if (data.type === 'file') {
+            fileManager.updateFile(newDataTitle, user, dateString, curRowNum, data);
+        }
         closeModal(evt);
     });
     // End Update file and folder
@@ -112,16 +111,11 @@ $(function () {
         // If data is a folder. delete all items inside
         var data = JSON.parse(localStorage.getItem(curRowId));
         if (data.type === 'folder') {
-            data.filesAndFolders.forEach(function (item) {
-                localStorage.removeItem(item);
-            });
+            folderManager.deleteFolder(curRowId, curFolder, data);
         }
-        // Delete data in curFolder
-        var curfolderData = JSON.parse(localStorage.getItem(curFolder));
-        curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(function (id) { return id !== curRowId; });
-        localStorage.setItem(curFolder, JSON.stringify(curfolderData));
-        localStorage.removeItem(curRowId);
-        loadData(curFolder);
+        else if (data.type === 'file') {
+            fileManager.deleteFile(curRowId, curFolder);
+        }
     });
     // Folder Link Click
     $('tbody').on('click', '.folderLink', function () {
@@ -146,6 +140,7 @@ $(function () {
 var closeModal = function (evt) {
     $('#folderName').val('');
     $('#dataTitle').val('');
+    $('#dataUser').val('');
     if ($('#backgroundDiv').hasClass('dialogBackground')) {
         $('#backgroundDiv')
             .removeClass('dialogBackground')

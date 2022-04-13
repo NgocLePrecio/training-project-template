@@ -19,4 +19,20 @@ var fileManager = {
         localStorage.setItem(curfolderData.id, JSON.stringify(curfolderData));
         return newFile;
     },
+    updateFile: function (title, user, dateString, curRowNum, data) {
+        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(1)")).text(title);
+        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(2)")).text(dateString);
+        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(3)")).text(user);
+        data.title = title;
+        data.modifiedAt = dateString;
+        data.modifiedBy = user;
+        localStorage.setItem(curRowId, JSON.stringify(data));
+    },
+    deleteFile: function (curRowId, curFolder) {
+        var curfolderData = JSON.parse(localStorage.getItem(curFolder));
+        curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(function (id) { return id !== curRowId; });
+        localStorage.setItem(curFolder, JSON.stringify(curfolderData));
+        localStorage.removeItem(curRowId);
+        loadData(curFolder);
+    }
 };

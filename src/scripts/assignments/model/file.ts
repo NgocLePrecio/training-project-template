@@ -40,4 +40,20 @@ const fileManager = {
     );
     return newFile;
   },
+  updateFile: (title: string, user: string, dateString: string,curRowNum: number ,data:FileData) => {
+    $(`table tbody tr:eq(${curRowNum}) td:eq(1)`).text(title);
+    $(`table tbody tr:eq(${curRowNum}) td:eq(2)`).text(dateString);
+    $(`table tbody tr:eq(${curRowNum}) td:eq(3)`).text(user);
+    data.title = title;
+    data.modifiedAt = dateString;
+    data.modifiedBy = user;
+    localStorage.setItem(curRowId, JSON.stringify(data));
+  },
+  deleteFile: (curRowId: string, curFolder: string) => {
+    let curfolderData: Folder = JSON.parse(localStorage.getItem(curFolder));
+    curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(id => id !== curRowId);
+    localStorage.setItem(curFolder, JSON.stringify(curfolderData));
+    localStorage.removeItem(curRowId);
+    loadData(curFolder);
+  }
 };

@@ -36,6 +36,27 @@ const folderManager = {
 
     return newFolder;
   },
+  updateFolder: (title: string, user: string, dateString: string,curRowNum: number, data:Folder) => {
+    $(`table tbody tr:eq(${curRowNum}) td:eq(1) a`).text(title);
+    $(`table tbody tr:eq(${curRowNum}) td:eq(2)`).text(dateString);
+    $(`table tbody tr:eq(${curRowNum}) td:eq(3)`).text(user);
+    data.title = title;
+    data.modifiedAt = dateString;
+    data.modifiedBy = user;
+    localStorage.setItem(curRowId, JSON.stringify(data));
+  },
+  deleteFolder: (curRowId: string, curFolder: string, data: Folder) => {
+    // Delete data inside deleted folder
+    data.filesAndFolders.forEach((item:string) => {
+        localStorage.removeItem(item);
+    });
+    // Delete the data in currrent folder
+    let curfolderData: Folder = JSON.parse(localStorage.getItem(curFolder));
+    curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(id => id !== curRowId);
+    localStorage.setItem(curFolder, JSON.stringify(curfolderData));
+    localStorage.removeItem(curRowId);
+    loadData(curFolder);
+  }
 };
 
 

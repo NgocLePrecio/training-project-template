@@ -82,18 +82,18 @@ $(function() {
   });
 
   $('#OkUpdateBtn').on('click', function(evt) { 
+    let data: any = JSON.parse(localStorage.getItem(curRowId));
     let newDataTitle = $('#dataTitle').val().toString();
     let user = $('#dataUser').val().toString();
     let today = new Date();
     let dateString = today.getDate().toString() + '/' + (today.getMonth() + 1).toString();
-    $(`table tbody tr:eq(${curRowNum}) td:eq(1)`).text(newDataTitle);
-    $(`table tbody tr:eq(${curRowNum}) td:eq(2)`).text(dateString);
-    $(`table tbody tr:eq(${curRowNum}) td:eq(3)`).text(user);
-    let data: any = JSON.parse(localStorage.getItem(curRowId));
-    data.title = newDataTitle;
-    data.modifiedAt = dateString;
-    data.modifiedBy = user;
-    localStorage.setItem(curRowId, JSON.stringify(data));
+
+    if (data.type === 'folder') {
+        folderManager.updateFolder(newDataTitle,user,dateString,curRowNum,data);
+    }
+    else if (data.type === 'file') {
+        fileManager.updateFile(newDataTitle,user,dateString,curRowNum,data);
+    }
     closeModal(evt);
   });
   // End Update file and folder
@@ -124,16 +124,12 @@ $(function() {
     // If data is a folder. delete all items inside
     let data: any = JSON.parse(localStorage.getItem(curRowId));
     if (data.type === 'folder') {
-      data.filesAndFolders.forEach((item:string) => {
-        localStorage.removeItem(item);
-      });
+        folderManager.deleteFolder(curRowId,curFolder,data);
     }
-    // Delete data in curFolder
-    let curfolderData: Folder = JSON.parse(localStorage.getItem(curFolder));
-    curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(id => id !== curRowId);
-    localStorage.setItem(curFolder, JSON.stringify(curfolderData));
-    localStorage.removeItem(curRowId);
-    loadData(curFolder);
+    else if (data.type === 'file') {
+        fileManager.deleteFile(curRowId,curFolder)
+    }
+   
   });
 
   // Folder Link Click
@@ -162,6 +158,7 @@ $(function() {
 const closeModal = (evt: any) => {
   $('#folderName').val('');
   $('#dataTitle').val('');
+  $('#dataUser').val('');
   if ($('#backgroundDiv').hasClass('dialogBackground')) {
     $('#backgroundDiv')
       .removeClass('dialogBackground')

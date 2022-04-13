@@ -17,4 +17,25 @@ var folderManager = {
         localStorage.setItem(newFolder.id, JSON.stringify(newFolder));
         return newFolder;
     },
+    updateFolder: function (title, user, dateString, curRowNum, data) {
+        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(1) a")).text(title);
+        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(2)")).text(dateString);
+        $("table tbody tr:eq(".concat(curRowNum, ") td:eq(3)")).text(user);
+        data.title = title;
+        data.modifiedAt = dateString;
+        data.modifiedBy = user;
+        localStorage.setItem(curRowId, JSON.stringify(data));
+    },
+    deleteFolder: function (curRowId, curFolder, data) {
+        // Delete data inside deleted folder
+        data.filesAndFolders.forEach(function (item) {
+            localStorage.removeItem(item);
+        });
+        // Delete the data in currrent folder
+        var curfolderData = JSON.parse(localStorage.getItem(curFolder));
+        curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(function (id) { return id !== curRowId; });
+        localStorage.setItem(curFolder, JSON.stringify(curfolderData));
+        localStorage.removeItem(curRowId);
+        loadData(curFolder);
+    }
 };
