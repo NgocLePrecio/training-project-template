@@ -1,46 +1,52 @@
 <html>
-	<head>
-		<link rel="stylesheet" href="./src/scss/pages/home-page.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="./src/scss/pages/ts_assignment.css">
-	</head>
-	<body>
-		<div class="togglearea">
-			<label for="toggle">
-				<span></span>
-				<span></span>
-				<span></span>
-			</label>
+
+<head>
+	<link rel="stylesheet" href="./src/scss/pages/home-page.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./src/scss/pages/ts_assignment.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="togglearea">
+		<label for="toggle">
+			<span></span>
+			<span></span>
+			<span></span>
+		</label>
+	</div>
+
+	<input type="checkbox" id="toggle">
+	<div class="navbar">
+		<a href="./index.html"><i class="fa fa-plus plusIcon"></i> New <i class="fa fa-angle-down"></i></a>
+		<a href="#"><i class="fa fa-upload iconColor"></i> Upload <i class="fa fa-angle-down"></i></a>
+		<a href="#"><i class="fa fa-refresh iconColor"></i> Sync</a>
+		<a href="#"><i class="fa fa-file-excel-o excelIcon"></i> Export to Excel</a>
+		<a href="#"><i class="fa fa-link iconColor"></i> Flow <i class="fa fa-angle-down"></i></a>
+		<a href="#"><i class="fa fa-ellipsis-h threedot"></i></a>
+	</div>
+	<div class="content">
+		<p class="title">Documents</p>
+		<div id="btnRow">
+			<a href="#" id="backLink" class="btn">Back</a>
+			<input type="file" id="fileUpload" class="btn">
+			<button id="btnAddFile" class="btn">Add File</button>
+			<button id="btnAddFolder" class="btn">Add Folder</button>
+			<button id="btnUpdate" class="btn">Update</button>
+			<button id="btnDelete" class="btn">Delete</button>
 		</div>
-		
-		<input type="checkbox" id="toggle">
-		<div class="navbar">
-			<a href="./index.html"><i class="fa fa-plus plusIcon"></i> New <i
-					class="fa fa-angle-down"></i></a>
-			<a href="#"><i class="fa fa-upload iconColor"></i> Upload <i
-					class="fa fa-angle-down"></i></a>
-			<a href="#"><i class="fa fa-refresh iconColor"></i> Sync</a>
-			<a href="#"><i class="fa fa-file-excel-o excelIcon"></i> Export to Excel</a>
-			<a href="#"><i class="fa fa-link iconColor"></i> Flow <i class="fa fa-angle-down"></i></a>
-			<a href="#"><i class="fa fa-ellipsis-h threedot"></i></a>
-		</div>
-		<div class="content">
-			<p class="title">Documents</p>
-			<button id="btnAddFile">Add File</button>
-			<button id="btnAddFolder">Add Folder</button>
-			<button>Update</button>
-			<table>
-				<thead>
-					<tr>
-						<th><i class="fa fa-file-o"></i></th>
-						<th>Name <i class="fa fa-angle-down"></i></th>
-						<th>Modified <i class="fa fa-angle-down"></i></th>
-						<th>Modified By <i class="fa fa-angle-down"></i></th>
-						<th><i class="fa fa-plus"></i> Add column</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
+		<table>
+			<thead>
+				<tr>
+					<th><i class="fa fa-file-o"></i></th>
+					<th>Name <i class="fa fa-angle-down"></i></th>
+					<th>Modified <i class="fa fa-angle-down"></i></th>
+					<th>Modified By <i class="fa fa-angle-down"></i></th>
+					<th><i class="fa fa-plus"></i> Add column</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr>
 						<td><i class="fa fa-folder"></i></td>
 						<td>CAS</td>
 						<td>April 30</td>
@@ -49,55 +55,40 @@
 					</tr>
 					<tr>
 						<td><i class="fa fa-file-excel-o excelIcon"></i></td>
-						<td>CoasterAndBargelLoading.xlsx</td>
-						<td>A few seconds ago</td>
-						<td>Administrator MOD</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-file-excel-o excelIcon"></i></td>
 						<td>RevenueByServices.xlsx</td>
 						<td>A few seconds ago</td>
 						<td>Administrator MOD</td>
 						<td></td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-file-excel-o excelIcon"></i></td>
-						<td>RevenueByServices2016.xlsx</td>
-						<td>A few seconds ago</td>
-						<td>Administrator MOD</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-file-excel-o excelIcon"></i></td>
-						<td>RevenueByServices2017.xlsx</td>
-						<td>A few seconds ago</td>
-						<td>Administrator MOD</td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>		
-		<!-- Add File Modal -->
-		<div id="addFileModal" class="modal">
-		
-			<!-- Modal content -->
-			<div class="modal-content">
-				<span id="closeFile" class="close">&times;</span>
-				<p>File</p>
+					</tr> -->
+			</tbody>
+		</table>
+		<div id="overlay">
+			<div class="cv-spinner">
+				<span class="spinner"></span>
 			</div>
-		
 		</div>
-		<!-- Add Folder Modal -->
-		<div id="addFolderModal" class="modal">
-		
-			<!-- Modal content -->
-			<div class="modal-content">
-				<span id="closeFolder" class="close">&times;</span>
-				<p>Folder</p>
-			</div>
-		
-		</div>
-		<script src="./dist/src/scripts/components/_assignment.js"></script>
-	</body>
+	</div>
+	<!-- Modal Add Folder -->
+	<div id="backgroundDiv"></div>
+	<div id="folderModal" style="text-align:center;" class="dialogHidden">
+		<label for="folderName">Enter folder name:</label><br />
+		<input id="folderName" type="text" /><br /><br />
+		<button id="OkFolderBtn" class="">OK</button>
+		<button id="CancelBtn" class="">Cancel</button>
+	</div>
+	<!-- Modal Update -->
+	<div id="updateModal" style="text-align:center;" class="dialogHidden">
+		<label for="dataTitle">Title:</label><br />
+		<input id="dataTitle" type="text" /><br />
+		<label for="dataUser">User:</label><br />
+		<input id="dataUser" type="text" /><br /><br />
+		<button id="OkUpdateBtn" class="">OK</button>
+		<button id="CancelUpdateBtn" class="">Cancel</button>
+	</div>
+	<script src="./dist/src/scripts/assignments/model/file.js"></script>
+	<script src="./dist/src/scripts/assignments/model/folder.js"></script>
+	<script src="./dist/src/scripts/assignments/helperFunction.js"></script>
+	<script src="./dist/src/scripts/assignments/main.js"></script>
+</body>
+
 </html>
