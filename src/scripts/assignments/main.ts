@@ -129,7 +129,6 @@ $(function() {
     else if (data.type === 'file') {
         fileManager.deleteFile(curRowId,curFolder)
     }
-   
   });
 
   // Folder Link Click

@@ -47,9 +47,7 @@ const folderManager = {
   },
   deleteFolder: (curRowId: string, curFolder: string, data: Folder) => {
     // Delete data inside deleted folder
-    data.filesAndFolders.forEach((item:string) => {
-        localStorage.removeItem(item);
-    });
+    deleteAllFolder(data);
     // Delete the data in currrent folder
     let curfolderData: Folder = JSON.parse(localStorage.getItem(curFolder));
     curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(id => id !== curRowId);
@@ -58,5 +56,15 @@ const folderManager = {
     loadData(curFolder);
   }
 };
+
+function deleteAllFolder(folder: Folder){
+  folder.filesAndFolders.forEach((item:string) => {
+    let data: any = JSON.parse(localStorage.getItem(item));
+    if (data.type === 'folder') {
+      deleteAllFolder(data);
+    };
+    localStorage.removeItem(item);
+  })
+}
 
 

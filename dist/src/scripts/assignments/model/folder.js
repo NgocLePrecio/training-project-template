@@ -28,9 +28,7 @@ var folderManager = {
     },
     deleteFolder: function (curRowId, curFolder, data) {
         // Delete data inside deleted folder
-        data.filesAndFolders.forEach(function (item) {
-            localStorage.removeItem(item);
-        });
+        deleteAllFolder(data);
         // Delete the data in currrent folder
         var curfolderData = JSON.parse(localStorage.getItem(curFolder));
         curfolderData.filesAndFolders = curfolderData.filesAndFolders.filter(function (id) { return id !== curRowId; });
@@ -39,3 +37,13 @@ var folderManager = {
         loadData(curFolder);
     }
 };
+function deleteAllFolder(folder) {
+    folder.filesAndFolders.forEach(function (item) {
+        var data = JSON.parse(localStorage.getItem(item));
+        if (data.type === 'folder') {
+            deleteAllFolder(data);
+        }
+        ;
+        localStorage.removeItem(item);
+    });
+}
